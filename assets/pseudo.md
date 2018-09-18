@@ -8,24 +8,24 @@
     #appends a timer;
     #appends question 1;
     #appends clickable choices;
-      if answer is clicked and is right:
+      #if answer is clicked and is right:
         #removes the choices;
         #says "correct";
         #correctAnswers ++;
         #appends the question answer;
-        appends a gif/picture/song of the answer;
-      if answer is clicked and is wrong:        
+        #appends a gif/picture/song of the answer;
+      #if answer is clicked and is wrong:        
         #removes the choices;
         #says "wrong";
         #wrongAnswers++;
         #appends the question answer;
-        appends a gif/picture/song of the answer;
-      if answer is not clicked:
+        #appends a gif/picture/song of the answer;
+      #if answer is not clicked:
         #says "time up";
         #unanswered++;
         #removes the choices;
         #appends question answer;
-        appends a gif/picture/song of the answer;
+        #appends a gif/picture/song of the answer;
 #Repeats through all of the questions;
     #When all of the questions are done:
       #remove quiz div;
@@ -45,4 +45,4 @@ Fix bug that puts the answer in the same spot for each round.
 
 #After done: show scoreboard;
 
-make reset button;
+#make reset button;
