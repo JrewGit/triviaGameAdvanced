@@ -26,26 +26,23 @@
         #removes the choices;
         #appends question answer;
         appends a gif/picture/song of the answer;
-Repeats through all of the questions;
-    When all of the questions are done:
-      remove quiz div;
-      append scoreBoard;
-      prints "Results";
-      prints correctAnswers, wrongAnswers, and unanswered;
-Make a reset button;
-    if the reset button is clicked:
-      reset all of the starting variables;
-      go back to the beginning of the game;
+#Repeats through all of the questions;
+    #When all of the questions are done:
+      #remove quiz div;
+      #append scoreBoard;
+      #prints "Results";
+      #prints correctAnswers, wrongAnswers, and unanswered;
+#Make a reset button;
+    #if the reset button is clicked:
+      #reset all of the starting variables;
+      #go back to the beginning of the game;
 
 TODO:
 
-#Fix bug that puts the answer in the same spot for each round.
+Fix bug that puts the answer in the same spot for each round.
 
 #Get the game to stay on the answer screen for 5 seconds then move on to the next question and repeat until done;
 
-After done: show scoreboard;
+#After done: show scoreboard;
 
 make reset button;
-        
-
-        
