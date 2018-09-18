@@ -1,21 +1,25 @@
 body {
     background-color: black;
-    background-image: linear-gradient(black,blue);
+    background-image: url(../images/musicNotes.jpg)
   }
   
   #display {
-    background-color: orange;
+    /* background-color: grey; */
     height: 100vh;
     text-align: center;
   }
   
   #gameDisplay {
-    margin-top: 100px;  
+    margin-top: 50px;  
+  }
+
+  #timerDisplay {
+      margin-bottom: 50px;
   }
   
   .answerChoice:hover {
-    background-color:blue;
-    box-shadow: 10px 10px 5px grey, 10px 10px 5px grey;     
+    background-color:#39485c;
+    box-shadow: 10px 10px 5px #718dad;     
   }
   
   button {
@@ -24,9 +28,10 @@ body {
     border: none;
     margin-top: 100px;    
     width: 200px;
-    background-color: black;
-    color: orange;
-    box-shadow: 10px 10px 5px grey, 10px 10px 5px grey; 
+    background-color: #39485c;
+    color: black;
+    box-shadow: 10px 10px 5px #718dad; 
+    font-family: 'Indie Flower', cursive;
   }
   
   button:hover {
@@ -35,14 +40,20 @@ body {
     border: none;
     width: 200px;
     margin-top: 100px;  
-    background-color: blue;
-    color: orange;
-    box-shadow: 10px 10px 5px grey, 10px 10px 5px grey; 
+    background-color: black;
+    color: #39485c;
+    box-shadow: 10px 10px 5px #718dad; 
   }
   
   p {
     padding: 15px;
     border-radius: 15px;
-    font-size: 1.5em;
+    font-size: 2em;
+    color: black;
+    font-family: 'Indie Flower', cursive;
   }
   
+  h1, h2, h3 {
+    color: black;
+    font-family: 'Indie Flower', cursive;
+  }

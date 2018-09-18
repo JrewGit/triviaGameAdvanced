@@ -1,10 +1,11 @@
 quiz = [
     {
-      question: "I'm blue if I was green I would?",
-      answer: "Die",
-      guess1: "Cry",
-      guess2: "Lie",
-      guess3: "Fly",
+      question: "I kissed a girl and I...",
+      answer: "liked it",
+      guess1: "hated it",
+      guess2: "had to tell somebody",
+      guess3: "got emotional",
+      src: "https://giphy.com/embed/eovguhftazsCQ",
     },
     {
       question: "Hey, alright now, alright now, fellas (Yeah?) Now, what's cooler than being cool?",
@@ -12,27 +13,31 @@ quiz = [
       guess1: "A Polar Bear",
       guess2: "Ice Breakers",
       guess3: "Alaska",
+      src: "https://giphy.com/embed/XT8TJ9TsxkmLm",
     },
     {
       question: "You can stand under my...",
-      answer: "Umbrella",
-      guess1: "Shed",
-      guess2: "Awning",
-      guess3: "Porch",
+      answer: "umbrella",
+      guess1: "shed",
+      guess2: "awning",
+      guess3: "porch",
+      src: "https://giphy.com/embed/26gss3wlXc5td8oH6",
     },
     {
-      question: "When the pimp's in the crib, ma...",
-      answer: "Drop it like its hot",
-      guess1: "Run away and get help",
-      guess2: "Stop drop and roll",
-      guess3: "Call 911",
+      question: "Billie Jean is not my...",
+      answer: "lover",
+      guess1: "mother",
+      guess2: "brother",
+      guess3: "cousin",
+      src: "https://giphy.com/embed/ibE2G1af8aMZG",
     },
     {
       question: "I used to rule the world seas would...",
-      answer: "Rise when I gave the word",
-      guess1: "Crash against the shore",
-      guess2: "Flood the streets",
-      guess3: "Bow down to me",
+      answer: "rise when I gave the word",
+      guess1: "crash against the shore",
+      guess2: "flood the streets",
+      guess3: "bow down to me",
+      src: "https://giphy.com/embed/U8a1q7u9n0HFm",
     },
   ];
   
@@ -62,7 +67,7 @@ quiz = [
   
       let setTimer = function () {
         console.log(time);
-        $("#timerDisplay").html(`<h2>${time}</h2>`);
+        $("#timerDisplay").html(`<h1>${time}</h1>`);
         time--;
         if (time < 0 && questionAnswered === false) {
           clearInterval(timeUp);
@@ -71,7 +76,7 @@ quiz = [
       };
       let timeUp = setInterval(setTimer, 1000);
   
-      $(`#gameDisplay`).append(`<h2 id="timerDisplay">${time}</h2>`)
+      $(`#gameDisplay`).append(`<h1 id="timerDisplay">${time}</h1>`)
   
       $(`#gameDisplay`).append(`<h3>${quiz[round].question}</h3>`);
   
@@ -113,8 +118,9 @@ quiz = [
     correctAnswers++;
     outcome = "Good job! You got that right!";
     $(`#gameDisplay`).html("");
-    $(`#gameDisplay`).append(`<p>${outcome}</p>`)
-    $(`#gameDisplay`).append(`<p>The correct answer is: ${quiz[round].answer}!</p>`)
+    $(`#gameDisplay`).append(`<p>${outcome}</p>`);
+    $(`#gameDisplay`).append(`<p>The correct answer is: ${quiz[round].answer}!</p>`);
+    $(`#gameDisplay`).append(`<iframe src=${quiz[round].src} width="300" height="400" frameBorder="0" ></iframe>`);
   
     // lets the game to continue after the answerScreen
     let nextQuestion = function () {
@@ -139,6 +145,7 @@ quiz = [
     $(`#gameDisplay`).html("");
     $(`#gameDisplay`).append(`<p>${outcome}</p>`)
     $(`#gameDisplay`).append(`<p>The correct answer is: ${quiz[round].answer}!</p>`);
+    $(`#gameDisplay`).append(`<iframe src=${quiz[round].src} width="300" height="400" frameBorder="0" ></iframe>`);
   
     // lets the game to continue after the answerScreen
     let nextQuestion = function () {
@@ -163,6 +170,7 @@ quiz = [
     $(`#gameDisplay`).html("");
     $(`#gameDisplay`).append(`<p>${outcome}!</p>`)
     $(`#gameDisplay`).append(`<p>The correct answer is: ${quiz[round].answer}!</p>`)
+    $(`#gameDisplay`).append(`<iframe src=${quiz[round].src} width="300" height="400" frameBorder="0" ></iframe>`);
   
     // lets the game to continue after the answerScreen
     let nextQuestion = function () {
