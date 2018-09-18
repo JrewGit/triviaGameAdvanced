@@ -39,9 +39,9 @@ Make a reset button;
 
 TODO:
 
-Fix bug that puts the answer in the same spot for each round.
+#Fix bug that puts the answer in the same spot for each round.
 
-Get the game to stay on the answer screen for 5 seconds then move on to the next question and repeat until done;
+#Get the game to stay on the answer screen for 5 seconds then move on to the next question and repeat until done;
 
 After done: show scoreboard;
 
