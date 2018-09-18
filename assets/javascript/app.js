@@ -39,47 +39,98 @@ quiz = [
   let correctAnswers = 0;
   let wrongAnswers = 0;
   let unanswered = 0;
-  let round = 0;
-  let outcome = "";
+  let time = 10;
+  let countdown = time;
+  let answerScreen = 5;
+  let round = 1;
+  let questionAnswered = false;
+  
+  let rightAnswer = function (round) {
+    correctAnswers++;
+    outcome = "Good job! You got that right!";
+    $(`#gameDisplay`).html("");
+    $(`#gameDisplay`).append(`<p>${outcome}</p>`)
+    $(`#gameDisplay`).append(`<p>The correct answer is: ${quiz[round].answer}!</p>`)
+  
+    // //still working on getting the game to continue after the answerScreen
+    // let test = function() {
+    //   console.log(answerScreen);
+    //   answerScreen--;
+    //   if (answerScreen < 0) {
+    //     round++;
+    //     clearInterval(nextRound);
+    //     $("#gameDisplay").html("");
+    //     quizPlay(round);
+    //     timeUp = setInterval(setTimer, 1000);
+    //   }
+    // }
+    // let nextRound = setInterval(test, 1000);  
+  }
+  
+  let incorrectAnswer = function (round) {
+    wrongAnswers++;
+    outcome = "Ooo sorry, you got that wrong.";
+    $(`#gameDisplay`).html("");
+    $(`#gameDisplay`).append(`<p>${outcome}</p>`)
+    $(`#gameDisplay`).append(`<p>The correct answer is: ${quiz[round].answer}!</p>`)
+  }
+  
+  let noAnswer = function (round) {
+    unanswered++;
+    outcome = "Took too long!";
+    $(`#gameDisplay`).html("");
+    $(`#gameDisplay`).append(`<p>${outcome}!</p>`)
+    $(`#gameDisplay`).append(`<p>The correct answer is: ${quiz[round].answer}!</p>`)
+  }
+  
   
   let quizPlay = function (round) {
+  
+    let setTimer = function () {
+      $("#timerDisplay").html(`<h2>${countdown}</h2>`);
+      countdown--;
+      if (countdown < 0 && questionAnswered === false) {
+        noAnswer(round);
+        clearInterval(timeUp);
+      }
+    }
+    let timeUp = setInterval(setTimer, 1000);
+  
+    // moves off of the anwer screen;
+    let moveOn = function() {
+      $("#gameDisplay").html("");
+      round++;
+      quizPlay(round);
+      clearInterval(moveOnTimer);
+    }
+    // let moveOnTimer = setInterval(moveOn,1000 * 5);
+  
+    $(`#gameDisplay`).append(`<h2 id="timerDisplay">${time}</h2>`)
   
     $(`#gameDisplay`).append(`<h3>${quiz[round].question}</h3>`);
   
     $(`#gameDisplay`).append(`<p class="answerChoice" id="answer">${quiz[round].answer}</p>`);
     $(`#answer`).click(function () {
-      correctAnswers++;
-      outcome = "RIGHT";
-      $(`#gameDisplay`).html("");
-      $(`#gameDisplay`).append(`<p>You were ${outcome}!</p>`)
-      $(`#gameDisplay`).append(`<p>The correct answer was: ${quiz[round].answer}!</p>`)
+      questionAnswered = true;
+      rightAnswer(round);
     })
   
     $(`#gameDisplay`).append(`<p class="answerChoice" id="guess1">${quiz[round].guess1}</p>`);
     $(`#guess1`).click(function () {
-      wrongAnswers++;
-      outcome = "WRONG";
-      $(`#gameDisplay`).html("");
-      $(`#gameDisplay`).append(`<p>You were ${outcome}!</p>`)
-      $(`#gameDisplay`).append(`<p>The correct answer was: ${quiz[round].answer}!</p>`)
+      questionAnswered = true;
+      incorrectAnswer(round);
     })
   
     $(`#gameDisplay`).append(`<p class="answerChoice" id="guess2">${quiz[round].guess2}</p>`);
     $(`#guess2`).click(function () {
-      wrongAnswers++;
-      outcome = "WRONG";
-      $(`#gameDisplay`).html("");
-      $(`#gameDisplay`).append(`<p>You were ${outcome}!</p>`)
-      $(`#gameDisplay`).append(`<p>The correct answer was: ${quiz[round].answer}!</p>`)
+      questionAnswered = true;
+      incorrectAnswer(round);
     })
   
     $(`#gameDisplay`).append(`<p class="answerChoice" id="guess3">${quiz[round].guess3}</p>`);
     $(`#guess3`).click(function () {
-      wrongAnswers++;
-      outcome = "WRONG";
-      $(`#gameDisplay`).html("");
-      $(`#gameDisplay`).append(`<p>You were ${outcome}!</p>`)
-      $(`#gameDisplay`).append(`<p>The correct answer was: ${quiz[round].answer}!</p>`)
+      questionAnswered = true;
+      incorrectAnswer(round);
     })
   
   }
@@ -92,6 +143,5 @@ quiz = [
       $(`#buttonPlay`).remove();
       quizPlay(round);
     })
-  
   
   })
