@@ -29,9 +29,9 @@ body {
     margin-top: 100px;    
     width: 200px;
     background-color: #39485c;
-    color: black;
+    color: white;
     box-shadow: 10px 10px 5px #718dad; 
-    font-family: 'Indie Flower', cursive;
+    font-family: 'Montserrat', sans-serif;
   }
   
   button:hover {
@@ -40,8 +40,8 @@ body {
     border: none;
     width: 200px;
     margin-top: 100px;  
-    background-color: black;
-    color: #39485c;
+    background-color: #39485c;
+    color: black;
     box-shadow: 10px 10px 5px #718dad; 
   }
   
@@ -49,11 +49,11 @@ body {
     padding: 15px;
     border-radius: 15px;
     font-size: 2em;
-    color: black;
-    font-family: 'Indie Flower', cursive;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
   }
-  
+
   h1, h2, h3 {
-    color: black;
-    font-family: 'Indie Flower', cursive;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
   }

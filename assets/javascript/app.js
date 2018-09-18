@@ -78,7 +78,7 @@ quiz = [
   
       $(`#gameDisplay`).append(`<h1 id="timerDisplay">${time}</h1>`)
   
-      $(`#gameDisplay`).append(`<h3>${quiz[round].question}</h3>`);
+      $(`#gameDisplay`).append(`<h2 id="questions">${quiz[round].question}</h2>`);
   
       $(`#gameDisplay`).append(`<p class="answerChoice" id="answer">${quiz[round].answer}</p>`);
       $(`#answer`).click(function () {
@@ -193,7 +193,7 @@ quiz = [
   let scoreboard = function () {
   
     $("#gameDisplay").html("");
-    $("#gameDisplay").append(`<h2>Results</h2>`);
+    $("#gameDisplay").append(`<h2>Results!</h2>`);
     $("#gameDisplay").append(`<p>Correct: ${correctAnswers}</p>`);
     $("#gameDisplay").append(`<p>Incorrect: ${wrongAnswers}</p>`);
     $("#gameDisplay").append(`<p>Unanswered: ${unanswered}</p>`);
