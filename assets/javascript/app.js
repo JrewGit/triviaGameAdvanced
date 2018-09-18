@@ -52,11 +52,22 @@ let wrongAnswers = 0;
 let unanswered = 0;
 let time = 10;
 let answerScreenCountdown = 5;
-let round = 1;
+let round = 0;
 let questionAnswered = false;
 
 
 let quizPlay = function (round) {
+
+    let setTimer = function () {
+        console.log(time);
+        $("#timerDisplay").html(`<h2>${time}</h2>`);
+        time--;
+        if (time < 0 && questionAnswered === false) {
+            clearInterval(timeUp);
+            noAnswer(round);
+        }
+    };
+    let timeUp = setInterval(setTimer, 1000);
 
     $(`#gameDisplay`).append(`<h2 id="timerDisplay">${time}</h2>`)
 
@@ -90,17 +101,6 @@ let quizPlay = function (round) {
         incorrectAnswer(round);
     })
 
-    let setTimer = function () {
-        console.log(time);
-        $("#timerDisplay").html(`<h2>${time}</h2>`);
-        time--;
-        if (time < 0 && questionAnswered === false) {
-            clearInterval(timeUp);
-            noAnswer(round);
-        }
-    };
-    let timeUp = setInterval(setTimer, 1000);
-
 }
 
 let rightAnswer = function (round) {
@@ -110,20 +110,19 @@ let rightAnswer = function (round) {
     $(`#gameDisplay`).append(`<p>${outcome}</p>`)
     $(`#gameDisplay`).append(`<p>The correct answer is: ${quiz[round].answer}!</p>`)
 
-    //still working on getting the game to continue after the answerScreen
-    // let test = function () {
-    //     //   console.log(countdown);
-    //     answerScreenCountdown--;
-    //     if (answerScreenCountdown < 0) {
-    //         clearInterval(nextRound);
-    //         $("#gameDisplay").html("");
-    //         time = 10;
-    //         round++;
-    //         quizPlay(round);
-    //         // timeUp = setInterval(setTimer, 1000);
-    //     };
-    // };
-    // let nextRound = setInterval(test, 1000);
+    // still working on getting the game to continue after the answerScreen
+    let test = function () {
+        console.log(answerScreenCountdown);
+        answerScreenCountdown--;
+        if (answerScreenCountdown < 0) {
+            clearInterval(nextRound);
+            $("#gameDisplay").html("");
+            time = 10;
+            round++;
+            quizPlay(round);
+        };
+    };
+    let nextRound = setInterval(test, 1000);
 };
 
 let incorrectAnswer = function (round) {
@@ -140,12 +139,4 @@ let noAnswer = function (round) {
     $(`#gameDisplay`).html("");
     $(`#gameDisplay`).append(`<p>${outcome}!</p>`)
     $(`#gameDisplay`).append(`<p>The correct answer is: ${quiz[round].answer}!</p>`)
-}
-
-// // moves off of the anwer screen;
-// let moveOn = function () {
-//     clearInterval(moveOnTimer);
-//     $("#gameDisplay").html("");
-//     round++;
-//     quizPlay(round);
-// }
+};
