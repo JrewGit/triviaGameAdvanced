@@ -118,7 +118,9 @@ let rightAnswer = function (round) {
             clearInterval(nextRound);
             $("#gameDisplay").html("");
             time = 10;
+            answerScreenCountdown = 5;
             round++;
+            questionAnswered = false;
             quizPlay(round);
         };
     };
@@ -130,7 +132,23 @@ let incorrectAnswer = function (round) {
     outcome = "Ooo sorry, you got that wrong.";
     $(`#gameDisplay`).html("");
     $(`#gameDisplay`).append(`<p>${outcome}</p>`)
-    $(`#gameDisplay`).append(`<p>The correct answer is: ${quiz[round].answer}!</p>`)
+    $(`#gameDisplay`).append(`<p>The correct answer is: ${quiz[round].answer}!</p>`);
+
+    // still working on getting the game to continue after the answerScreen
+    let test = function () {
+        console.log(answerScreenCountdown);
+        answerScreenCountdown--;
+        if (answerScreenCountdown < 0) {
+            clearInterval(nextRound);
+            $("#gameDisplay").html("");
+            time = 10;
+            answerScreenCountdown = 5;
+            round++;
+            questionAnswered = false;
+            quizPlay(round);
+        };
+    };
+    let nextRound = setInterval(test, 1000);
 };
 
 let noAnswer = function (round) {
@@ -139,4 +157,20 @@ let noAnswer = function (round) {
     $(`#gameDisplay`).html("");
     $(`#gameDisplay`).append(`<p>${outcome}!</p>`)
     $(`#gameDisplay`).append(`<p>The correct answer is: ${quiz[round].answer}!</p>`)
+
+    // still working on getting the game to continue after the answerScreen
+    let test = function () {
+        console.log(answerScreenCountdown);
+        answerScreenCountdown--;
+        if (answerScreenCountdown < 0) {
+            clearInterval(nextRound);
+            $("#gameDisplay").html("");
+            time = 10;
+            answerScreenCountdown = 5;
+            round++;
+            questionAnswered = false;
+            quizPlay(round);
+        };
+    };
+    let nextRound = setInterval(test, 1000);
 };
